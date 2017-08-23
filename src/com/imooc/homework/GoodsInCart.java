@@ -29,6 +29,12 @@ public class GoodsInCart {
 	public void setNum(int num) {
 		this.num = num;
 	}
+
+	@Override
+	public String toString() {
+		return "购物车中的商品信息 [商品：" + goods + ", 数量：" + num + "]";
+	}
+	
 	
 	
 }
