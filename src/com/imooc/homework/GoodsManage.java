@@ -34,6 +34,7 @@ public class GoodsManage {
 	//显示所有商品信息
 	public void displayAllGoods(){
 		if(goodsSet!=null){
+			System.out.println("所有商品信息为：");
 			Iterator<Goods> it=goodsSet.iterator();
 			while(it.hasNext()){
 				System.out.println(it.next());

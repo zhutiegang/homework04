@@ -25,13 +25,15 @@ public class ShoppingCart {
 
 	// 添加商品到购物车
 	public void addGoodsToCart(GoodsManage gm) {
+		System.out.println("添加商品到购物车");
+		gm.displayAllGoods();
 		if (shoppingCart == null) {
 			shoppingCart = new HashMap<String, GoodsInCart>();
 		}
 		Set<Goods> goodsSet = gm.getGoodsSet();
 		Iterator<Goods> it = goodsSet.iterator();
 		boolean flag=true;
-		System.out.println("请输入商品编号：");
+		System.out.println("请输入要添加的商品编号：");
 		Scanner sc=new Scanner(System.in);
 		String id=sc.next();
 		Goods findGoods=null;
@@ -56,6 +58,7 @@ public class ShoppingCart {
 	//修改购物中的商品数量
 	public void updataNumInCart(){
 		if (shoppingCart != null) {
+			System.out.println("修改购物车中的商品数量");
 			Scanner sc=new Scanner(System.in);
 			System.out.println("请输入商品编号");
 			String id=sc.next();
@@ -74,6 +77,7 @@ public class ShoppingCart {
 	//显示购物车中的所有商品
 	public void displayAllInCart(){
 		if (shoppingCart != null) {
+			System.out.println("显示购物车中的所有商品信息");
 			Iterator<GoodsInCart> it=shoppingCart.values().iterator();
 			while(it.hasNext()){
 				System.out.println(it.next());

@@ -65,7 +65,7 @@ public class Goods {
 	}
 	@Override
 	public String toString() {
-		return "商品信息 [商品编号： " + goodsId + ", 名称： " + goodsName + ", 价格： " + price + ", 描述： "
+		return "商品信息 [编号：  " + goodsId + ",  名称：  " + goodsName + ",  价格：  " + price + ",  描述： "
 				+ goodsDesp + "]";
 	}
 	
