@@ -52,31 +52,36 @@ public class TestDemo {
 		GoodsManage gm = new GoodsManage();
 		boolean gmFlag=false;
 
-		// 购物车中的商品信息类
-		/*
-		 * System.out.println(
-		 * "*************************************************************************************************"
-		 * ); System.out.println("购物车中的商品信息类"); GoodsInCart goodsInC=new
-		 * GoodsInCart(goodsArr[3],3); System.out.println(goodsInC);
-		 */
-
-		// 购物车类
-		// 购物车中的商品信息类
+		// 实例化购物车类
 		 ShoppingCart shopC=new ShoppingCart();
 		 
 		int menuIndex = -1;
 		int gmMenuIndex=-1;
 		int cartMenuIndex=-1;
 		TestDemo testDemo = new TestDemo();
-		do {
+		do {	//进入主目录
 			testDemo.displayMainMenu();
 			Scanner console = new Scanner(System.in);
-			menuIndex = console.nextInt();
+			try{
+				menuIndex = console.nextInt();
+			}catch(InputMismatchException e){
+				System.out.println("主菜单目录选项输入有误，请重新输入");
+				console.next();
+				continue;
+			}
+			
 			switch (menuIndex) {
 			case 1:		//进入商品管理目录
 				do{
 					testDemo.displayGMMenu();
-					gmMenuIndex=console.nextInt();
+					try{
+						gmMenuIndex=console.nextInt();
+					}catch(InputMismatchException e){
+						System.out.println("商品管理菜单输入格式有误！请重新输入");
+						console.next();
+						continue;
+					}
+					
 					switch(gmMenuIndex){
 					case 1:
 						System.out.println("商品信息导入");
@@ -101,7 +106,7 @@ public class TestDemo {
 					case 9:
 						break;
 					default:
-						System.out.println("菜单选择有误！");
+						System.out.println("商品管理菜单选择有误！请重新输入");
 						break;
 					}
 				}while(gmMenuIndex!=9);
@@ -112,7 +117,8 @@ public class TestDemo {
 					try{
 						cartMenuIndex=console.nextInt();
 					}catch(InputMismatchException e){
-						System.out.println("菜单选项输入格式有误");
+						System.out.println("购物车管理菜单选项输入格式有误，请输入整型数值");
+						console.next();
 						continue;
 					}
 					switch(cartMenuIndex){
@@ -120,29 +126,34 @@ public class TestDemo {
 						if(gm.getGoodsSet()==null){
 							System.out.println("还没有商品，记得导入商品信息！");
 						}else{
+							System.out.println("添加商品到购物车");
 							shopC.addGoodsToCart(gm);
 						}
 						break;
 					case 2:
+						System.out.println("修改购物车中的商品数量");
 						shopC.updataNumInCart();
 						break;
 					case 3:
+						System.out.println("显示购物车中的所有商品信息");
 						shopC.displayAllInCart(); 
 						break;
 					case 4:
 						System.out.println("结算");
+						shopC.settleAccounts();
 						break;
 					case 9:
 						break;
 						default:
-							System.out.println("菜单选择有误");
+							System.out.println("购物车管理菜单选择有误！请重新输入");
 							break;
 					}
 				}while(cartMenuIndex!=9);
 				break;
 			case 0:
-
 				break;
+				default:
+					System.out.println("主菜单目录选项输入有误，请重新输入");
 			}
 		} while (menuIndex != 0);
 	}
